@@ -20,7 +20,7 @@ public class Hooks {
     public void setUp() {
            TestBase.getDriver().manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
            TestBase.driver.manage().window().maximize();
-         //  TestBase.getDriver().get(ConfigurationReader.getProperty("url"));
+           TestBase.getDriver().get(ConfigurationReader.getProperty("url"));
     }
 
 

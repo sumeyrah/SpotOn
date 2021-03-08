@@ -10,8 +10,8 @@ import cucumber.api.junit.Cucumber;
 @CucumberOptions(
         features = "src/test/resources/",
         glue = "spotOn/steps/",
-        dryRun = true,
-        tags =   {"@s1"} ,
+     //   dryRun = true,
+        tags =   {"@regression"} ,
         plugin = {"html:target/default-cucumber-reports",
                 "json:target/cucumber.json",
                 "rerun:target/rerun.txt"

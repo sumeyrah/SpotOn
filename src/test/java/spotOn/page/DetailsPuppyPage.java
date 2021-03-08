@@ -1,5 +1,6 @@
 package spotOn.page;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import spotOn.utils.BrowserUtils;
@@ -12,7 +13,10 @@ public class DetailsPuppyPage extends BrowserUtils {
     private WebElement selectBroke;
 
     public void clickAdoptMe(String adopt){
-        clickWithJS(selectBroke);
-        clickWithJS(adoptMe);
+
+            WebElement element = driver.findElement(By.xpath("//input[@value='Adopt Me!' or type='submit']"));
+            waitForPageToLoad(20);
+            element.click();
+
     }
 }

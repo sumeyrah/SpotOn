@@ -1,23 +1,24 @@
 package spotOn.page;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import spotOn.utils.BrowserUtils;
 
 public class ProceedPage extends BrowserUtils {
-    @FindBy(css = "[id='collar']")
+    @FindBy(id = "collar")
     private WebElement collarLeash ;
 
-    @FindBy(xpath = "//input[@id='toy']")
+    @FindBy(id = "toy")
     private WebElement chewToy;
 
-    @FindBy(css = "[id='carrier']")
+    @FindBy(id = "carrier")
     private WebElement travelCarrier;
 
-    @FindBy(css = "[id='vet']")
+    @FindBy(id = "vet")
     private WebElement firstVetVisit;
 
-    @FindBy(css = "[value='Complete the Adoption']")
+    @FindBy(xpath = "//*[contains(text(),'Complete the Adoption')]")
     private WebElement completeTheAdoption;
 
     @FindBy(css = "[value='Adopt Another Puppy']")
@@ -26,15 +27,50 @@ public class ProceedPage extends BrowserUtils {
     @FindBy(css = "[value='Change your mind']")
     private WebElement changeYourMind;
 
+
+    public void selectAccesories(String arg){
+
+         switch (arg){
+
+             case "Chew Toy":
+                 wait(1);
+                 clickChewToy();
+                 break;
+             case "Travel Carrier":
+                 clickTravelCarrier();
+                 break;
+             case "Random Accessories":
+                 wait(1);
+                 clickChewToy();
+                 break;
+             case "Random Accessories 2":
+                 clickTravelCarrier();
+                 break;
+             case "Random Accessories 3":
+                 wait(1);
+                 clickChewToy();
+                 break;
+             default:
+                 System.out.println("No Accesories selected");
+         }
+
+    }
+
+
+
+
     public void clickChewToy(){
-        moveToElem(chewToy);
-        clickWithJS(chewToy);
-        chewToy.isSelected();
+        wait(2);
+        WebElement element = driver.findElement(By.id("toy"));
+        waitForVisibility(element,30);
+        element.click();
     }
 
     public void clickTravelCarrier(){
-        waitForClickablility(travelCarrier, 10);
-        travelCarrier.isSelected();
+        wait(2);
+        WebElement element = driver.findElement(By.id("carrier"));
+        waitForClickablility(element, 10);
+        element.click();
     }
 
     public void clickCollarLeash(){
@@ -48,7 +84,10 @@ public class ProceedPage extends BrowserUtils {
     }
 
     public void clickCompleteTheAdoption(){
-        clickWithJS(completeTheAdoption);
+        wait(2);
+        WebElement element = driver.findElement(By.xpath("//input[@value='Complete the Adoption']"));
+        waitForClickablility(element, 10);
+        element.click();
     }
 
 }
